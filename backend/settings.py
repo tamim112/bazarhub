@@ -93,13 +93,23 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+import os
+import dj_database_url
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# DATABASES কনফিগারেশন (SQLite + PostgreSQL Hybrid)
+if os.environ.get('RENDER'):
+    # লাইভ সার্ভারে (Render) এই সিকিউর ক্লাউড ডেটাবেজটি চলবে
+    DATABASES = {
+        'default': dj_database_url.parse('postgresql://bazarhubuser:qcL6UmrrVbm3K4TC5Y4qElALt87RtexA@dpg-da6jakvavr4c7392srv0-a/bazarhub')
     }
-}
+else:
+    # আপনার লোকাল পিসিতে আগের মতোই সহজ SQLite চলবে (যাতে লোকাল কাজ ব্যাহত না হয়)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
@@ -154,7 +164,6 @@ REST_FRAMEWORK = {
     )
 }
 
-import os
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
