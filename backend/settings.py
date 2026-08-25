@@ -159,6 +159,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # হোয়াইটস্পেস অপ্টিমাইজেশন সেটিংস
 STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage", # 🔥 এটি ইমেজের জন্য বাধ্যতামূলক
+    },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
