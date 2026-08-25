@@ -27,7 +27,14 @@ DEBUG = True
 
 
 # কোন কোন ডোমেন এই ব্যাকএন্ড অ্যাক্সেস করতে পারবে
-ALLOWED_HOSTS = ['://onrender.com', '127.0.0.1', 'localhost', '*.vercel.app']
+ALLOWED_HOSTS = [
+    'bazarhub-it5k.onrender.com', # 🔥 আপনার আসল রেন্ডার সাব-ডোমেন
+    '127.0.0.1', 
+    'localhost',
+    '.onrender.com'  ,
+    '*.vercel.app' # এটি দেওয়া থাকলে রেন্ডারের যেকোনো সাব-ডোমেন অটোমেটিক কাজ করবে
+]
+
 
 # ভার্সেলের লাইভ লিংক থেকে রিকোয়েস্ট অ্যালাউ করার জন্য
 CORS_ALLOWED_ORIGINS = [
