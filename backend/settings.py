@@ -28,10 +28,11 @@ DEBUG = True
 
 # কোন কোন ডোমেন এই ব্যাকএন্ড অ্যাক্সেস করতে পারবে
 ALLOWED_HOSTS = [
-    'bazarhub-it5k.onrender.com', # 🔥 আপনার আসল রেন্ডার সাব-ডোমেন
+    '.onrender.com'  ,
+    'bazarhub-f272.onrender.com', # 🔥 আপনার আসল রেন্ডার সাব-ডোমেন
     '127.0.0.1', 
     'localhost',
-    '.onrender.com'  ,
+    'bazarhubbd.vercel.app',
     '*.vercel.app' # এটি দেওয়া থাকলে রেন্ডারের যেকোনো সাব-ডোমেন অটোমেটিক কাজ করবে
 ]
 
@@ -105,7 +106,7 @@ import dj_database_url
 if os.environ.get('RENDER'):
     # লাইভ সার্ভারে (Render) এই সিকিউর ক্লাউড ডেটাবেজটি চলবে
     DATABASES = {
-        'default': dj_database_url.parse('postgresql://bazarhubuser:qcL6UmrrVbm3K4TC5Y4qElALt87RtexA@dpg-da6jakvavr4c7392srv0-a/bazarhub')
+        'default': dj_database_url.parse('postgresql://bazarhubuser:CkfZPcfjXRgHl1LfAD8YHb091btjX5R3@dpg-da6kjr9srm7s73afo9jg-a/bazarhub_db')
     }
 else:
     # আপনার লোকাল পিসিতে আগের মতোই সহজ SQLite চলবে (যাতে লোকাল কাজ ব্যাহত না হয়)
@@ -151,7 +152,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 # 🔥 pathlib এর বদলে os.path ব্যবহার করে পাথটি ফিক্স করুন যাতে লিনাক্স সার্ভার সরাসরি চিনে নেয়
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
