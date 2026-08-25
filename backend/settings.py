@@ -25,8 +25,14 @@ SECRET_KEY = 'django-insecure-!d*pf=vxw-t97ur(dlh6no0(b0!0q&&a$xa907t^-99oh6_593
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
+# কোন কোন ডোমেন এই ব্যাকএন্ড অ্যাক্সেস করতে পারবে
+ALLOWED_HOSTS = ['://onrender.com', '127.0.0.1', 'localhost', '*.vercel.app']
+
+# ভার্সেলের লাইভ লিংক থেকে রিকোয়েস্ট অ্যালাউ করার জন্য
+CORS_ALLOWED_ORIGINS = [
+    "https://vercel.app", # এখানে আপনার ভার্সেলের ডোমেন লিংকটি বসাবেন
+]
 
 # Application definition
 
@@ -145,3 +151,5 @@ import os
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
