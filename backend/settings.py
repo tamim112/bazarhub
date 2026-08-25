@@ -37,8 +37,13 @@ ALLOWED_HOSTS = [
 
 
 # ভার্সেলের লাইভ লিংক থেকে রিকোয়েস্ট অ্যালাউ করার জন্য
-CORS_ALLOWED_ORIGINS = [
-    "https://vercel.app", # এখানে আপনার ভার্সেলের ডোমেন লিংকটি বসাবেন
+CORS_ALLOW_ALL_ORIGINS = True  
+CORS_ALLOW_CREDENTIALS = True
+
+# Security protection configuration for live production headers
+CSRF_TRUSTED_ORIGINS = [
+    'https://onrender.com',
+    'https://*.vercel.app'
 ]
 
 # Application definition
