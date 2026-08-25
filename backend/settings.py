@@ -146,8 +146,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles' # 🔥 লাইভ সার্ভারে স্ট্যাটিক ফাইল জমার মেইন ফোল্ডার
+STATIC_URL = '/static/'
+
+# 🔥 pathlib এর বদলে os.path ব্যবহার করে পাথটি ফিক্স করুন যাতে লিনাক্স সার্ভার সরাসরি চিনে নেয়
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 
 # হোয়াইটস্পেস অপ্টিমাইজেশন সেটিংস
 STORAGES = {
@@ -155,7 +157,6 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
